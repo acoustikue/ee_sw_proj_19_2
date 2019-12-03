@@ -99,7 +99,7 @@ if __name__ == '__main__':
     #fcm_server.notifyMultipleDevice('Test', 'Test', '', {'image': 'https://i.ytimg.com/vi/sioEY4tWmLI/maxresdefault.jpg'})
     #fcm_server.notifyMultipleDevice('Test', 'Test', '', {'image': ''})
     fcm_server.notifyMultipleDevice('Test', 'Test', 'http://' + str( socket.gethostbyname(socket.getfqdn()) + ':5000/static/python.png'), \
-        {'image': 'http://' + str( socket.gethostbyname(socket.getfqdn()) + ':5000/static/python.png')})
+        {'image': 'https://storage.googleapis.com/ee-sw-proj-19-2.appspot.com/sample.png?Expires=1575367754&GoogleAccessId=firebase-adminsdk-8i6k8%40ee-sw-proj-19-2.iam.gserviceaccount.com&Signature=ZpLBp6%2Bt%2F3S706PjPDf6cUZrCF7oykBfNivgEPzunFmn7LVK4TnfuxuRdVM9A1C6M%2Bzvxl6INBDLtiV%2FCqkie1MpK1UIF%2Bol3bIstI612cLioH6Ju3MsSqm%2BKyfwVTdrEtVY9R0eeFZkZ6OYSKyjwS8ss31XZrWLiklp7SwQXl13YAriVZbWQJQEtecflje21b3MBgM30jCotguKiVKJ%2BmKsQfqnS%2FSmbg%2BilwCRWKPWYTzx9hZIT%2Fm5ZYUvm71qyyz8GWP%2B2y4rCoNfMkGc0wEmXDPN2f0QvVS77gJBO%2Fn2if5TQRkU3iDb5KA50A3tNxxJcYv%2FatT3zthvMCBkQA%3D%3D'})
 
 
 

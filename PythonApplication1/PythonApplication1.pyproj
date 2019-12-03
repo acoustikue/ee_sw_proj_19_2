@@ -34,6 +34,9 @@
     <Compile Include="app\ctrl\fcm.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="app\ctrl\firestore.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\ctrl\provider\app.py">
       <SubType>Code</SubType>
     </Compile>
@@ -71,10 +74,12 @@
     <Folder Include="app\ctrl\provider\" />
     <Folder Include="app\ctrl\provider\static\" />
     <Folder Include="app\ctrl\provider\templates\" />
+    <Folder Include="app\data\" />
     <Folder Include="app\test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\ctrl\provider\static\python.png" />
+    <Content Include="app\data\python.png" />
     <Content Include="app\ctrl\__init__.py">
       <SubType>Code</SubType>
     </Content>

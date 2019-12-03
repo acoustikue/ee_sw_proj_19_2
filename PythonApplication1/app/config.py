@@ -54,6 +54,7 @@ CURRENT_SYS = CURRENT_OS + ' ' + str(platform.release()) + ' ' + str(platform.ve
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 FCM_DIR = ''
+FIRESTORE_ADMIN_FILE = ''
 
 DIR_IDENTIFIER = ''
 
@@ -62,11 +63,14 @@ LOG_FILENAME_PREFIX = 'log-'
 
 if CURRENT_OS == 'Windows':
     FCM_DIR = BASE_DIR + '\\data\\'
+    FIRESTORE_ADMIN_FILE = FCM_DIR
 elif CURRENT_OS == 'Linux': 
     FCM_DIR = BASE_DIR + '/data/'
+    FIRESTORE_ADMIN_FILE = FCM_DIR
 
 FCM_SERVER_FILE = FCM_DIR + 'server_fcm.data'
 FCM_DEVICE_FILE = FCM_DIR + 'device_fcm.data'
+FIRESTORE_ADMIN_FILE = FIRESTORE_ADMIN_FILE + 'admin.json'
 
 if CURRENT_OS == 'Windows':
     LOG_DIR = BASE_DIR + '\\logs\\'
