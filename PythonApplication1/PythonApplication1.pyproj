@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>4fb4ca87-5c57-4519-899f-f82df2932c3c</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>app\ctrl\fcm.py</StartupFile>
+    <StartupFile>app\ctrl\firestore.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -75,11 +75,12 @@
     <Folder Include="app\ctrl\provider\static\" />
     <Folder Include="app\ctrl\provider\templates\" />
     <Folder Include="app\data\" />
+    <Folder Include="app\export\" />
     <Folder Include="app\test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\ctrl\provider\static\python.png" />
-    <Content Include="app\data\python.png" />
+    <Content Include="app\export\python.png" />
     <Content Include="app\ctrl\__init__.py">
       <SubType>Code</SubType>
     </Content>

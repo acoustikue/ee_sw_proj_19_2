@@ -80,6 +80,36 @@ class Command:
 command_handle = Command()
 
 
+# User command
+def sample_command():
+    
+    loggerd.log('This is a sample command.')
+    print('This is a sample command.')
+
+
+
+
+
+
+
+
+
+command_handle.registerCommand('sample', sample_command)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
 

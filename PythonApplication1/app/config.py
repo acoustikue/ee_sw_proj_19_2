@@ -55,6 +55,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 FCM_DIR = ''
 FIRESTORE_ADMIN_FILE = ''
+FIRESTORE_BUCKET = 'ee-sw-proj-19-2.appspot.com'
+FIRESTORE_UPLOAD_DIR = ''
 
 DIR_IDENTIFIER = ''
 
@@ -64,9 +66,12 @@ LOG_FILENAME_PREFIX = 'log-'
 if CURRENT_OS == 'Windows':
     FCM_DIR = BASE_DIR + '\\data\\'
     FIRESTORE_ADMIN_FILE = FCM_DIR
+    FIRESTORE_UPLOAD_DIR = BASE_DIR + '\\export\\'
+
 elif CURRENT_OS == 'Linux': 
     FCM_DIR = BASE_DIR + '/data/'
     FIRESTORE_ADMIN_FILE = FCM_DIR
+    FIRESTORE_UPLOAD_DIR = BASE_DIR + '/export/'
 
 FCM_SERVER_FILE = FCM_DIR + 'server_fcm.data'
 FCM_DEVICE_FILE = FCM_DIR + 'device_fcm.data'
@@ -76,17 +81,17 @@ if CURRENT_OS == 'Windows':
     LOG_DIR = BASE_DIR + '\\logs\\'
     RUNTIME = 'na'
 
-    # MESSAGE_DIR = BASE_DIR + '\\fcm_message\\'
 elif CURRENT_OS == 'Linux': 
     LOG_DIR = BASE_DIR + '/logs/'
     RUNTIME = 'rpi'
-    # MESSAGE_DIR = BASE_DIR + '/fcm_message/'
+
 
 
 # First!!
 # Make directory if there is no log folder
 if not(os.path.isdir(LOG_DIR)): os.makedirs(os.path.join(LOG_DIR))
 if not(os.path.isdir(FCM_DIR)): os.makedirs(os.path.join(FCM_DIR))
+if not(os.path.isdir(FCM_DIR)): os.makedirs(os.path.join(FIRESTORE_UPLOAD_DIR))
 
 if not(os.path.isfile(FCM_SERVER_FILE)):
     with open(FCM_SERVER_FILE, "w", encoding="utf-8") as file:

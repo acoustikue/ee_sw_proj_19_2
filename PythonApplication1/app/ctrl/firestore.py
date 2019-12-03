@@ -37,9 +37,43 @@ import config as cf
 from loggingd import *
 
 # gs://ee-sw-proj-19-2.appspot.com
+from google.cloud import storage
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = cf.FIRESTORE_ADMIN_FILE
+
+# FirestorePi class
+# This class provides access to Firebase storage.
+# Author: SukJoon Oh
+class FirestorePi:
+
+    #
+    # ctor
+    def __init__(self):
+        try:
+            self.client = storage.Client()
+            self.bucket = self.client.get_bucket(cf.FIRESTORE_BUCKET)
+
+        except Exception as e:
+            print('\t[Firestore] ' + e)
+            loggerd.log(e, 'fs')
+
+    #
+    # Target image must be in the predefined area.
+    # The area(folder) is defined in config.py
+    def uploadImage(self, target=''):
+
+        # file name which will be stored
+        imageBlob = self.bucket.blob(target)
+        imageBlob.upload_from_filename(cf.FIRESTORE_UPLOAD_DIR + target) # upload!
+
+        print('\tFile successfully uploaded.')
+        loggerd.log('File upload complete.', 'fs')
+
+        return imageBlob.generate_signed_url(expiration=timedelta(hours=1), method='GET')
 
 
-
+# Global
+firestore_handle = FirestorePi()
 
 
 
@@ -51,18 +85,15 @@ if __name__ == '__main__':
     print(cf.PROJECT_BANNER)
     print('\tExecuting config script. Running in debug mode.\n')
 
-    from google.cloud import storage
+    # This is how you use the object
+    url = firestore_handle.uploadImage('python.png')
     
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = cf.FIRESTORE_ADMIN_FILE
-    
+    # Lets use the FCM server.
+    from fcm import fcm_server
+    fcm_server.notifyMultipleDevice('AlertPi 작동 감지',\
+        '움직임이 감지되었습니다. 확인하십시오.',\
+        url, {'image': url})
 
-    client = storage.Client()
-    bucket = client.get_bucket('ee-sw-proj-19-2.appspot.com')
-
-    imageBlob = bucket.blob("sample.png")
-    imageBlob.upload_from_filename(cf.FCM_DIR + 'python.png')
-
-    print(imageBlob.generate_signed_url(expiration=timedelta(hours=1), method='GET'))
 
     input()
 
